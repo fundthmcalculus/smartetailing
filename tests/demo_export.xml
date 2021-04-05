@@ -1,0 +1,116 @@
+<WebOrders>
+    <NumberOfOrders>46</NumberOfOrders>
+    <WebOrder>
+        <Order>
+            <OrderId>011521-031915-526</OrderId>
+            <Currency>USD</Currency>
+            <Time>Fri Jan 15 15:19:16 2021</Time>
+            <CustomerId>2658757</CustomerId>
+            <CustomerIP/>
+            <AddressShipTo>
+                <Name>
+                    <First/>
+                    <Last/>
+                    <Full></Full>
+                </Name>
+                <Address1>648 Monmouth St</Address1>
+                <Address2/>
+                <City>Newport</City>
+                <State>KY</State>
+                <Country>United States</Country>
+                <Zip>41071</Zip>
+                <Phone>859-261-6187</Phone>
+                <Email/>
+            </AddressShipTo>
+            <AddressBillTo>
+                <Name>
+                    <First>Scott</First>
+                    <Last>Phillips</Last>
+                    <Full>Scott Phillips</Full>
+                </Name>
+                <Address1/>
+                <Address2/>
+                <City/>
+                <State/>
+                <Country/>
+                <Zip/>
+                <Phone>513XXXYYYY</Phone>
+                <Email>AAAA</Email>
+            </AddressBillTo>
+            <AffiliateInfo>
+                <Id>0</Id>
+                <Affiliate/>
+                <Commission>0</Commission>
+            </AffiliateInfo>
+            <Shipping>
+                <Method>Curbside Pickup - FREE</Method>
+                <Classification>In-Store Pickup</Classification>
+                <PickupLocation>Newport, KY</PickupLocation>
+            </Shipping>
+            <PaymentInfo>
+                <PaymentMethod>PayPal</PaymentMethod>
+                <CreditCardInfo>
+                    <CreditCard>
+                        <Number/>
+                        <Type>PayPal</Type>
+                        <Expiration>/</Expiration>
+                        <CCV/>
+                    </CreditCard>
+                    <CardAuthInfo>
+                        <Amount>444.13</Amount>
+                        <Auth-Response/>
+                        <AVS-Response/>
+                        <CCV-Response/>
+                        <TransId/>
+                    </CardAuthInfo>
+                </CreditCardInfo>
+            </PaymentInfo>
+            <Status>Cancelled</Status>
+            <Comments/>
+            <Items>
+                <Item num="0">
+                    <Id>362778</Id>
+                    <Code>72404</Code>
+                    <Mpn>49120-1800</Mpn>
+                    <Gtin1>888818539079</Gtin1>
+                    <Gtin2/>
+                    <Quantity>1</Quantity>
+                    <Unit-Price>39.99</Unit-Price>
+                    <Weight>1.00</Weight>
+                    <Description>Specialized Stix Elite 2 Headlight</Description>
+                    <Category>Catalog &amp;gt; Accessories &amp;gt; Lighting &amp;gt; Headlights</Category>
+                    <Url>http://www.reserbicycle.com/itemdetails.cfm?ID=362778</Url>
+                    <Taxable>Yes</Taxable>
+                    <ModelYear/>
+                    <Option name="Color" type="Normal">Black</Option>
+                    <SupplierFulfilled>No</SupplierFulfilled>
+                </Item>
+                <Item num="1">
+                    <Id>8794</Id>
+                    <Code>75565</Code>
+                    <Mpn>T222B</Mpn>
+                    <Gtin1>00857373008306</Gtin1>
+                    <Gtin2/>
+                    <Quantity>1</Quantity>
+                    <Unit-Price>379.00</Unit-Price>
+                    <Weight>40.00</Weight>
+                    <Description>Kuat Transfer V2 2-Bike Hitch Rack</Description>
+                    <Category>Catalog &amp;gt; Car Racks &amp;gt; Hitch-Mount</Category>
+                    <Url>http://www.reserbicycle.com/itemdetails.cfm?ID=8794</Url>
+                    <Taxable>Yes</Taxable>
+                    <ModelYear/>
+                    <Option name="Size" type="Normal">2in</Option>
+                    <SupplierFulfilled>No</SupplierFulfilled>
+                </Item>
+            </Items>
+            <OrderTotal>
+                <Line name="Subtotal" type="Subtotal">418.99</Line>
+                <Line name="Discount" type="Discount">0.00</Line>
+                <Line name="Shipping" type="Shipping">0.00</Line>
+                <Line name="Tax" type="Tax">25.14</Line>
+                <Line name="Total" type="Total">444.13</Line>
+            </OrderTotal>
+        </Order>
+        <WebComment>SmartEtailing Order on 01/15/2021 15:19:16 by , Curbside Pickup - FREE</WebComment>
+    </WebOrder>
+</WebOrders>
