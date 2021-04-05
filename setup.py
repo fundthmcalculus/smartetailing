@@ -16,7 +16,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/fundthmcalculus/smartetailing",  # TODO - Create this repo
     author="Scott Phillips",
-    author_email="phillips.scott@sandsas.com",
+    author_email="polygonguru@gmail.com",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
