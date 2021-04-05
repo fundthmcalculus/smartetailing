@@ -10,7 +10,7 @@ README = HERE.joinpath("README.md").read_text()
 # This is the call which does all the work
 setup(
     name="smartetailing",
-    version="0.2.0",  # TODO - Match this to smartetailing/__init__.py
+    version="0.3.0",  # TODO - Match this to smartetailing/__init__.py
     description="Connect to the smart etailing website order feeds",
     long_description=README,
     long_description_content_type="text/markdown",
