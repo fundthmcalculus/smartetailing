@@ -28,7 +28,6 @@ class WebOrder(IXMLSerializer):
         return [WebOrder().from_xml(order) for order in source_element.findall('WebOrder')]
 
 
-
 class Order(IXMLSerializer):
     def __init__(self):
         self.currency = "USD"

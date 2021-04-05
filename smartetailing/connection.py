@@ -28,6 +28,10 @@ class SmartetailingConnection:
             self.__update_order(order_id)
             logging.info(f"Updated order {order_id}")
 
+    def update_order_status(self, order_id: str, order_status: str) -> None:
+        self.__update_status(order_id, order_status)
+        logging.info(f"Updated order={order_id} to status={order_status}")
+
     def __export_order_xml(self) -> Element:
         r = self.__make_http_request(self.base_url, 'Orders', self.merchant_id, self.url_key)
         return etree.XML(r.content)
