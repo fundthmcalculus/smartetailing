@@ -137,7 +137,10 @@ class SmartetailingConnection:
                         if item_number_match or qbp_number_match:
                             item_number = item_number_match.group(1) if item_number_match else qbp_number_match.group(1)
                             end_index = self.add_item_to_order(item_number, index, my_order, text_lines)
-
+            # Get order status
+            order_status_table = order_detail_soup.find('table', attrs={'class': 'table form-inline'})
+            order_status = order_status_table.find('option', attrs={'selected': ''})
+            my_order.status = order_status.text
             all_orders.append(my_order)
             print(f'Order #{order_id} done.\n{my_order}')
 
