@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 from lxml.etree import Element
 
-from smartetailing.objects import WebOrder, Order, AddressInfo, Item
+from smartetailing.objects import WebOrder, Order, AddressInfo, Item, Name
 
 
 def set_customer_affiliate_shipping_method(my_order, text_dict):
@@ -142,7 +142,7 @@ class SmartetailingConnection:
             order_status = order_status_table.find('option', attrs={'selected': ''})
             my_order.status = order_status.text
             all_orders.append(my_order)
-            print(f'Order #{order_id} done.\n{my_order}')
+            logging.info(f'Order #{order_id} scraped:\n{my_order}')
 
         return s, all_orders
 
@@ -225,7 +225,7 @@ def get_address_information(text_lines: List[str], information_key) -> AddressIn
         else:
             address = {}
         my_address = AddressInfo()
-        my_address.name = text_lines[index + 1]
+        my_address.name = Name(text_lines[index + 1])
         my_address.email = get_email_address(text_lines)
         my_address.phone = get_phone_number(text_lines)
         my_address.address1 = address.get('full_street', '')
