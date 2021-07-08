@@ -107,7 +107,7 @@ class Item(IXMLSerializer):
         self.unit_price = 0.00
         self.weight = 1.00
         self.description = ""
-        self.category = "Catalog > Accessories > Lighting > Headlights"
+        self.category = ""
         self.url = ""
         self.taxable = "YES"
         self.model_year = ""
