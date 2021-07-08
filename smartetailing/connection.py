@@ -142,7 +142,7 @@ class SmartetailingConnection:
             order_status = order_status_table.find('option', attrs={'selected': ''})
             my_order.status = order_status.text
             all_orders.append(my_order)
-            logging.info(f'Order #{order_id} scraped:\n{my_order}')
+            logging.info(f'Order #{order_id} scraped')
 
         return s, all_orders
 
@@ -222,6 +222,15 @@ def get_address_information(text_lines: List[str], information_key) -> AddressIn
         addresses = pyap.parse(text, country="us")
         if addresses:
             address = addresses[0].as_dict()
+        elif len(text_lines) >= 9:
+            us_index = text_lines.index('United States')
+            address = {'full_street': text_lines[index+2].strip(','),
+                       'city': text_lines[us_index-3].strip(','),
+                       'region1': text_lines[us_index-2].strip(','),
+                       'postal_code': text_lines[us_index-1].strip(','),
+                       'country_id': text_lines[us_index].strip(',')}
+            if index+2 < us_index-4:
+                address['address_2'] = text_lines[us_index-4]
         else:
             address = {}
         my_address = AddressInfo()
@@ -229,6 +238,7 @@ def get_address_information(text_lines: List[str], information_key) -> AddressIn
         my_address.email = get_email_address(text_lines)
         my_address.phone = get_phone_number(text_lines)
         my_address.address1 = address.get('full_street', '')
+        my_address.address2 = address.get('address_2', '')
         my_address.city = address.get('city', '')
         my_address.zip = address.get('postal_code', '')
         my_address.state = address.get('region1', '')
