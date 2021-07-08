@@ -265,10 +265,16 @@ class AddressInfo(IXMLSerializer):
 
 
 class Name(IXMLSerializer):
-    def __init__(self):
+    def __init__(self, full_name=''):
         self.first = ""
         self.last = ""
         self.full = ""
+        if full_name:
+            self.full = full_name
+            tokens = full_name.split(' ')
+            if tokens and len(tokens) >= 2:
+                self.first = tokens[0]
+                self.last = ' '.join(tokens[2:])
 
     def from_xml(self, source_element: Element) -> 'Name':
         self.first = source_element.find("First").text
