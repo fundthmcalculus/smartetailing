@@ -10,7 +10,7 @@ README = HERE.joinpath("README.md").read_text()
 # This is the call which does all the work
 setup(
     name="smartetailing",
-    version="0.4.0",
+    version="0.4.1",
     description="Connect to the smartetailing website order feeds",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -25,5 +25,5 @@ setup(
     ],
     packages=["smartetailing"],
     include_package_data=True,
-    install_requires=["lxml", "requests"]
+    install_requires=["lxml", "requests", "urllib3", "beautifulsoup4", "pyap"]
 )
