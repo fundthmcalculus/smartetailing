@@ -128,36 +128,36 @@ class SmartetailingConnection:
                     set_order_total(my_order, text_dict)
 
                     my_order.comments = text_dict.get('Additional Info')
-                    item_number = qbp_number = ''
-                    item_number_index = 0
-                    for item in remainder_text:
+                    end_index = 0
+                    for index, item in enumerate(text_lines):
+                        # We are in the middle of an item block, just skip the rest.
+                        if index < end_index:
+                            continue
                         item_number_match = re.search(r"My #:(\d+)", item)
-                        if item_number_match:
-                            item_number = item_number_match.group(1)
-                            item_number_index = remainder_text.index(item)
-
                         qbp_number_match = re.search(r"[A-Z]+ #:([\w\d\-]+)", item)
-                        if qbp_number_match:
-                            qbp_number = qbp_number_match.group(1)
-
-                    if item_number:
-                        my_item = Item()
-                        my_item.id = item_number
-                        my_item.mpn = item_number
-                        my_item.gtin1 = qbp_number
-                        # Locate the item name
-                        try:
-                            start_index = remainder_text.index('More')
-                        except ValueError:
-                            start_index = item_number_index
-                        my_item.description = "\n".join(
-                            remainder_text[start_index + 1:remainder_text.index("Add Note") - 2])
-                        my_order.items.append(my_item)
+                        if item_number_match or qbp_number_match:
+                            item_number = item_number_match.group(1) if item_number_match else qbp_number_match.group(1)
+                            end_index = self.add_item_to_order(item_number, index, my_order, text_lines)
 
             all_orders.append(my_order)
             print(f'Order #{order_id} done.\n{my_order}')
 
         return s, all_orders
+
+    def add_item_to_order(self, item_number, item_number_index, my_order, text_lines) -> int:
+        my_item = Item()
+        my_item.id = item_number
+        my_item.mpn = item_number
+        # my_item.gtin1 = qbp_number
+        # Locate the item name
+        try:
+            start_index = text_lines.index('More', item_number_index)
+        except ValueError:
+            start_index = item_number_index
+        end_index = text_lines.index("Add Note", start_index)
+        my_item.description = "\n".join(text_lines[start_index + 1:end_index - 2])
+        my_order.items.append(my_item)
+        return end_index
 
     def __export_order_xml(self) -> Element:
         r = self.__make_http_request(self.base_url, 'Orders', self.merchant_id, self.url_key)
