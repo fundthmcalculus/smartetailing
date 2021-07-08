@@ -44,18 +44,17 @@ class SmartetailingConnection:
         self.username = username
         self.password = password
 
-    def export_orders(self) -> Iterator[Order]:
+    def export_orders(self) -> List[Order]:
         """
         Export the order XML and generate the order objects
         :return:
         """
         try:
             order_xml = self.__export_order_xml()
-            for order in order_xml.findall('WebOrder'):
-                yield WebOrder().from_xml(order).order
+            return [WebOrder().from_xml(order).order for order in order_xml.findall('WebOrder')]
         except ConnectionError as ce:
-            # Try the web scraper
-            raise
+            # Try the web scraper?
+            return self.export_orders_via_web()
 
     def confirm_order_receipts(self, order_ids: Iterator[str]) -> None:
         for order_id in order_ids:
@@ -66,7 +65,7 @@ class SmartetailingConnection:
         self.__update_status(order_id, order_status)
         logging.info(f"Updated order={order_id} to status={order_status}")
 
-    def export_orders_via_web(self):
+    def export_orders_via_web(self) -> List[Order]:
         my_session, order_information = self.__get_open_orders(self.__login())
         my_session.close()
         return order_information
