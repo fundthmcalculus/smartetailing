@@ -1,2 +1,7 @@
-# Version of the package
-__version__ = "0.3.0"
+
+def main():
+    print("Use connection.Smartetailingconnection() to perform operations!")
+
+
+if __name__ == "__main__":
+    main()

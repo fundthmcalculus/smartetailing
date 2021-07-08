@@ -73,6 +73,9 @@ class Order(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return "\n".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class Shipping(IXMLSerializer):
     def __init__(self):
@@ -89,6 +92,9 @@ class Shipping(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class Item(IXMLSerializer):
     def __init__(self):
@@ -101,10 +107,10 @@ class Item(IXMLSerializer):
         self.unit_price = 0.00
         self.weight = 1.00
         self.description = ""
-        self.category = "Catalog > Accessories > Lighting > Headlights"
+        self.category = ""
         self.url = ""
         self.taxable = "YES"
-        self.model_year = ""  # TODO - What is this?
+        self.model_year = ""
         self.option = Option()
 
     def from_xml(self, source_element: Element) -> 'Item':
@@ -128,6 +134,12 @@ class Item(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
+    def __repr__(self):
+        return self.__str__()
+
 
 class Option(IXMLSerializer):
     def __init__(self):
@@ -146,6 +158,9 @@ class Option(IXMLSerializer):
 
     def to_xml(self) -> Element:
         raise NotImplementedError
+
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
 
 
 class OrderTotal(IXMLSerializer):
@@ -172,6 +187,9 @@ class OrderTotal(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class CardAuthInfo(IXMLSerializer):
     def __init__(self):
@@ -192,11 +210,14 @@ class CardAuthInfo(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class AffiliateInfo(IXMLSerializer):
     def __init__(self):
         self.id = 0
-        self.affiliate = None
+        self.affiliate = "None"
         self.commission = 0  # Money ?
 
     def from_xml(self, source_element: Element) -> 'AffiliateInfo':
@@ -207,6 +228,9 @@ class AffiliateInfo(IXMLSerializer):
 
     def to_xml(self) -> Element:
         raise NotImplementedError
+
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
 
 
 class AddressInfo(IXMLSerializer):
@@ -236,6 +260,9 @@ class AddressInfo(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class Name(IXMLSerializer):
     def __init__(self):
@@ -252,6 +279,9 @@ class Name(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class PaymentInfo(IXMLSerializer):
     def __init__(self):
@@ -266,6 +296,9 @@ class PaymentInfo(IXMLSerializer):
     def to_xml(self) -> Element:
         raise NotImplementedError
 
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
+
 
 class CreditCardInfo(IXMLSerializer):
     def __init__(self):
@@ -279,6 +312,9 @@ class CreditCardInfo(IXMLSerializer):
 
     def to_xml(self) -> Element:
         raise NotImplementedError
+
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
 
 
 class CreditCard(IXMLSerializer):
@@ -297,3 +333,6 @@ class CreditCard(IXMLSerializer):
 
     def to_xml(self) -> Element:
         raise NotImplementedError
+
+    def __str__(self):
+        return " ".join([f"{k}={v}" for k, v in self.__dict__.items()])
