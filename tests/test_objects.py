@@ -38,12 +38,14 @@ class TestWebOrder(TestCase):
         d3 = get_dollars("123.456")
         d4 = get_dollars("001,234.567")
         d5 = get_dollars("")
+        d6 = get_dollars(None)
 
         self.assertEqual(123.0, d1)
         self.assertEqual(2345.0, d2)
         self.assertEqual(123.456, d3)
         self.assertEqual(1234.567, d4)
         self.assertEqual(0.0, d5)
+        self.assertEqual(0.0, d6)
 
     def test_download_orders(self):
         connection = _get_connection()

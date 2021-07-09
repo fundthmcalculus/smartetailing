@@ -290,4 +290,4 @@ def set_order_total(my_order, text_dict):
 
 
 def get_dollars(text: str) -> float:
-    return float("0" + (text.replace(",", "") or "0").strip("$"))
+    return float("0" + (text or "0").replace(",", "").strip("$"))
