@@ -10,7 +10,7 @@ README = HERE.joinpath("README.md").read_text()
 # This is the call which does all the work
 setup(
     name="smartetailing",
-    version="0.4.6",
+    version="0.4.5",
     description="Connect to the smartetailing website order feeds",
     long_description=README,
     long_description_content_type="text/markdown",
